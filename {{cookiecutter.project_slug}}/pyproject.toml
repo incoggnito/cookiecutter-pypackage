@@ -1,3 +1,50 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+license = "{{ cookiecutter.open_source_license }}"
+
+readme = "README.md"
+
+{% if cookiecutter.document_publisher == 'ReadTheDocs' %}
+homepage = https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io.
+{% else %}
+{%- endif %}repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+homepage = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}"
+
+packages = [{ include = "{{ cookiecutter.project_slug }}", from = "src" }]
+
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+[tool.poetry.dependencies]
+# List project dependencies here
+
+[tool.poetry.dev-dependencies]
+{% if cookiecutter.use_pytest == "y" -%}
+pytest-cov = "^2.6.0"{% endif %}
+bump2version = "^0.5.0"
+black = "^20.8b1"
+pip = "^21.0.1"
+wheel = "^0.36.2"
+watchdog = "^1.0.2"
+tox = "^3.21.3"
+coverage = "^5.4"
+Sphinx = "^3.4.3"
+twine = "^3.3.0"
+pytest = "^6.2.2"
+pytest-runner = "^5.2"
+setuptools = "^52.0.0"
+isort = "^5.7.0"
+
 [tool.black]
 line-length = {{ cookiecutter.max_line_length }}
 
@@ -8,24 +55,18 @@ include_trailing_comma = true
 use_parentheses = true
 
 [tool.pylint.message_control]
-disable = [
-    "import-error",
-    "bad-continuation",
-    "logging-fstring-interpolation",
-]
+disable = ["import-error", "bad-continuation", "logging-fstring-interpolation"]
 
 [tool.pylint.format]
 max-line-length = {{ cookiecutter.max_line_length }}
-good-names = [
-    "logger",
-]
+good-names = ["logger"]
 
 [tool.mypy]
-ignore_missing_imports = true  # not supported yet
+ignore_missing_imports = true # not supported yet
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q"  # test summary for (a)ll except passed
+addopts = "-ra -q" # test summary for (a)ll except passed
 testpaths = ["tests"]
 log_cli = true
 log_cli_level = "WARNING"
@@ -60,10 +101,20 @@ deps = mypy
 commands = mypy --ignore-missing-imports src/
 
 [testenv]
-extras = tests
-deps = toml
-commands = 
-    coverage run --parallel -m pytest
+whitelist_externals = poetry
+skip_install = true
+setenv =
+    PYTHONPATH = {toxinidir}
+{% if cookiecutter.use_pytest == "y" -%}
+deps = pytest-cov
+; If you want to make tox run the tests with the same versions, use poetry 
+; to install the dependencies 
+commands =
+    poetry install -v
+    poetry run pytest --cov=src/{{ cookiecutter.project_slug }} tests/
+{% else %}
+commands = poetry run python -m test
+{%- endif %}
 
 [testenv:coverage-report]
 skip_install = true

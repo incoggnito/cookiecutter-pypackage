@@ -1,17 +1,26 @@
 {
-  "full_name": "Lukas Berbuer",
-  "email": "lukas.berbuer@example.com",
-  "github_username": "lukasberbuer",
+  "full_name": "Andreas Hofer",
+  "email": "incoggnito@protonmail.com",
+  "github_username": "incoggnito",
   "project_name": "Python Boilerplate",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "version": "0.1.0",
   "max_line_length": 100,
+  "use_pytest": "y",
   "use_pypi": "y",
   "use_readthedocs": "y",
   "_copy_without_render": [
     ".github/workflows",
     "docs/_templates"
+  ],
+  "open_source_license": [
+    "MIT license",
+    "BSD license",
+    "ISC license",
+    "Apache Software License 2.0",
+    "GNU General Public License v3",
+    "Not open source"
   ]
 }

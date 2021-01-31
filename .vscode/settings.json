@@ -1,0 +1,10 @@
+{
+    // pipx installation, check all path settings (which poetry)
+    "python.poetryPath": "poetry",
+    "jupyter.notebookFileRoot": "{fileDirname}",
+    "python.sortImports.path": "isort",
+    "python.linting.mypyPath": "mypy",
+    "python.linting.pylintPath": "pylint",
+    "python.formatting.blackPath": "black",
+    "python.formatting.autopep8Path": "autopep8",
+}
