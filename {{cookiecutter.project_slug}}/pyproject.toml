@@ -9,7 +9,7 @@ readme = "README.md"
 
 repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
 
-homepage = "https://{{ cookiecutter.project_slug | replace('_', '-'') }}.readthedocs.io."
+homepage = "https://{{ cookiecutter.project_slug | replace('_', '-') }}.readthedocs.io"
 
 
 packages = [{ include = "{{ cookiecutter.project_slug }}", from = "src" }]
