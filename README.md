@@ -22,14 +22,14 @@
 
 Install the latest Cookiecutter if you haven't installed it yet (this requires Cookiecutter 1.4.0 or higher):
 
-- `pipx` to install the global packages (check with witch)
+<!-- - `pipx` to install the global packages (check with witch)
 
   ```sh
   # pipx for global package or use `sps python-*` in Arch
   python3 -m pip install --user pipx
   python3 -m pipx ensurepath
   pipx install cookiecutter, jupyter, black, flake8, mypy, tox, ipykernel, iypthon, isort, poetry, sphinx
-  ```
+  ``` -->
 
 - `cookiecutter` to load the template and fill the options
 
@@ -50,6 +50,7 @@ Install the latest Cookiecutter if you haven't installed it yet (this requires C
 - `poetry` to manage virtual environments
 
   ```py
+  poetry env use fullpath_to_env
   # Install a new package
   poetry add numba
   ```
