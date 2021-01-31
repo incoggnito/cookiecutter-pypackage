@@ -11,6 +11,7 @@
   "use_pytest": "y",
   "use_pypi": "y",
   "use_readthedocs": "y",
+  "document_publisher": ["GithubPages", "ReadTheDocs"],
   "_copy_without_render": [
     ".github/workflows",
     "docs/_templates"

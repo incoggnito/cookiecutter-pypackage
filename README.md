@@ -28,7 +28,7 @@ Install the latest Cookiecutter if you haven't installed it yet (this requires C
   # pipx for global package or use `sps python-*` in Arch
   python3 -m pip install --user pipx
   python3 -m pipx ensurepath
-  pipx install cookiecutter, jupyter, black, flake8, mypy, tox, ipykernel, iypthon, isort, poetry
+  pipx install cookiecutter, jupyter, black, flake8, mypy, tox, ipykernel, iypthon, isort, poetry, sphinx
   ```
 
 - `cookiecutter` to load the template and fill the options
