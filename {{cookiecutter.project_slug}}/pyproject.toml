@@ -7,11 +7,10 @@ license = "{{ cookiecutter.open_source_license }}"
 
 readme = "README.md"
 
-{% if cookiecutter.document_publisher == 'ReadTheDocs' %}
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+
 homepage = https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io.
-{% else %}
-{%- endif %}repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
-homepage = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}"
+
 
 packages = [{ include = "{{ cookiecutter.project_slug }}", from = "src" }]
 
